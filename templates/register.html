@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	
+	<!-- DESCRIPTION -->
+	<meta name="description" content="ACUSA: ACUSA website" />
+
+	<!-- OG -->
+	<meta property="og:title" content="ACUSA : ACUSA website" />
+	<meta property="og:description" content="ACUSA : ACUSA website" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.png' %}" />
+
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>CRAWFORD : CRAWFORD website </title>
+
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--[if lt IE 9]>
+	<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
+	<script src="{% static 'assets/js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/assets.css' %}">
+
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/typography.css' %}">
+
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/shortcodes/shortcodes.css' %}">
+
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{% static 'assets/css/color/color-1.css' %}">
+
+	<!-- REVOLUTION SLIDER CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/revolution/css/layers.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/revolution/css/settings.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/revolution/css/navigation.css' %}">
+	<!-- REVOLUTION SLIDER END -->
+
+
+
+	<script src="{% static 'admin/assets/js/html5shiv.min.js' %}"></script>
+	<script src="{% static 'admin/assets/js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/assets.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/vendors/calendar/fullcalendar.css' %}">
+
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/typography.css' %}">
+
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/shortcodes/shortcodes.css' %}">
+
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/dashboard.css' %}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/color/color-1.css' %}">
+
+
+
+</head>
+<body id="bg">
+<div class="page-wraper">
+
+	<div class="account-form">
+		<div class="account-head" style="background-image:url({% static 'assets/images/background/bg2.jpg' %});">
+			<a href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt=""></a>
+		</div>
+		<div class="account-form-inner">
+			<div class="account-container">
+				{% if not trueprofile %}
+					<div class="heading-bx left">
+						<h2 class="title-head">Sign Up <span>Now</span><p><a href="{% url 'index' %}">Go back to Homepage</a></p></h2>
+						<p>Login Your Account: <a href="{% url 'login' %}">Click here</a></p>
+						<p align="justify">PLEASE TAKE NOTE:<br>All the data you will be submiting must be valid, also know that your ACUSA Dues Payment will also be linked to these DATA. You might miss our good services and also forfeit your ACUSA Dues Payment should your data be invalid, PLEASE REGISTER CORRECTLY BY FILLING YOUR DATABASE BELOW.</p>
+					</div>
+					<form class="contact-bx" action="" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<ul><h6>{{mr}}</h6></ul>
+						{{sn.errors}}
+							<div class="row placeani">
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input name="matric" type="text" required class="form-control" placeholder="Matric No" id="mn">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input name="sname" type="text" required class="form-control" placeholder="Surname">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input name="fname" type="text" required class="form-control" placeholder="First Name">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input name="oname" type="text" required class="form-control" placeholder="Other Name">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+<!--											<input name="phoneno" type="tel" required="" class="form-control">-->
+<!--												   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"-->
+											<input type="tel" id="phone" name="phoneno"
+											       pattern="[0-9]{11}"
+												   required class="form-control" placeholder="Phone No">
+
+											<small>Format Example: 08037106689</small>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input type="email" name="email"  required id="id_email"  class="form-control" placeholder="Your Email Address">
+										</div>
+									</div>
+									{{sn.errors}}
+								</div>
+<!--								<div class="col-lg-12">-->
+<!--									<div class="form-group">-->
+<!--										<div class="input-group">-->
+<!--											<input name="department" type="text" required="" class="form-control" placeholder="Department">-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<small>Select Your Faculty</small>
+											<select name="faculty" class="input-group" required>
+												<option></option>
+												{% for i in faculty %}
+													<option>{{i.faculty}}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<small>Select Your Department</small>
+											<select name="department" class="input-group" required>
+												<option></option>
+												{% for i in department %}
+													<option>{{i.department}}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<small>Select Your Level</small>
+											<select name="level" class="input-group" required>
+												<option></option>
+												<option>100</option>
+												<option>200</option>
+												<option>300</option>
+												<option>400</option>
+												<option>500</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<table>
+												Mode Of Entry:
+											<tr>
+												<td  align="justify"><input type="radio" id="iuj" name="dt" value="UTME / JAMB" required> UTME/JAMB</td>
+											</tr>
+												<td align="left"><input type="radio" id="idt" name="dt" value="Direct Entry / Transfer" required> DIRECT ENTRY / TRANSFER</td>
+<!--											<label for="idt">HTML</label><br></td>-->
+											</tr>
+												</table>
+
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-control" placeholder="Create Password">
+											<ul><h6>
+												<li>Your password can’t be too similar to your other personal information.</li>
+												<li>Your password must contain at least 8 characters.</li>
+												<li>Your password can’t be a commonly used password.</li>
+												<li>Your password can’t be entirely numeric.</li>
+											</h6>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-control" placeholder="Confirm Password">
+											<ul>
+												<li><h6>Enter the same password as before in order to verify.</h6></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+                                <div class="col-lg-12 m-b30">
+									<button name="submit" type="submit" value="Submit" class="btn button-md">Sign Up</button>
+								</div>
+							</div>
+						<ul><h6>{{mr}}</h6></ul>
+						{{sn.errors}}
+					</form>
+				{% endif %}
+				{% if trueprofile %}
+					<div class="heading-bx left">
+						<h2 class="title-head">Your Account has been Successfully Created</h2>
+					</div>
+				<a href="{% url 'login' %}"> <button class="btn button-md">Login into your Dashboard</button></a>
+				<br>
+				<br>Or <a href="">Go Back Home </a> <a href="{% url 'register' %}">| Or Reload this Page</a>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- External JavaScripts -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendors/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js' %}"></script>
+<script src="{% static 'assets/vendors/magnific-popup/magnific-popup.js' %}"></script>
+<script src="{% static 'assets/vendors/counter/waypoints-min.js' %}"></script>
+<script src="{% static 'assets/vendors/counter/counterup.min.js' %}"></script>
+<script src="{% static 'assets/vendors/imagesloaded/imagesloaded.js' %}"></script>
+<script src="{% static 'assets/vendors/masonry/masonry.js' %}"></script>
+<script src="{% static 'assets/vendors/masonry/filter.js' %}"></script>
+<script src="{% static 'assets/vendors/owl-carousel/owl.carousel.js' %}"></script>
+<script src="{% static 'assets/js/functions.js' %}"></script>
+<script src="{% static 'assets/js/contact.js' %}"></script>
+
+
+
+
+</body>
+
+</html>
